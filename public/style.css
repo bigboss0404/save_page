@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    justify-content:left;
+    align-items: flex-start; /* 顶部对齐 */
+    padding: 20px;
+}
+
+.left-column {
+    
+    float: left;
+}
+
+ .right-column{
+    
+    float: right;
+}
+
+.label-input {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.label-input label {
+    min-width: 200px; /* 设置标签的最小宽度 */
+    text-align: right; /* 文本右对齐 */
+    margin-right: 20px; /* 调整标签与输入框之间的间距 */
+}
+
+.box {
+    width: 200px; /* 设置输入框的宽度 */
+}
+
+#save {
+    background-color: #4CAF50; /* 设置按钮背景颜色 */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+.button-container {
+    text-align: center;
+    position: fixed;
+    bottom: 700px; /* 距离底部的距离 */
+    left: 0;
+    right: 45%;
+}
+#save:hover {
+    background-color: #45a049; /* 设置按钮悬停时的背景颜色 */
+}

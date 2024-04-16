@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>save</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form action="/save" method="POST">
+            <div class="column-container">
+            <div class="left-column">
+            <div class="label-input">
+                <label for="ic">New IC NUMBER:</label>
+                <input type="number" class="box" id="ic" name="ic" placeholder="IC NUMBER" required/>
+            </div>
+            <div class="label-input">
+                <label for="gender">GENDER:</label>
+                <input type="text" class="box" id="gender" name="gender" placeholder="M/F" pattern="[MFmf]" title="Please enter 'M' for Male or 'F' for Female" required/>
+            </div>
+            <div class="label-input">
+                <label for="postcode">POSTCODE:</label>
+                <input type="number" class="box" id="postcode" name="postcode" placeholder="postcode" required/>
+            </div></div>
+            <div class="right-column"><br><br>
+            <div class="label-input">
+                <label for="date_of_birth">Date of Birth:</label>
+                <input type="date" class="box" id="date_of_birth" name="date_of_birth" placeholder="date_of_birth" required/>
+            </div>
+            <div class="label-input">
+                <label for="town">Town:</label>
+                <input type="text" class="box" id="town" name="town" placeholder="town" required/>
+            </div></div></div>
+            <div class="button-container">
+            <input type="submit" value="save" id="save"/></div>
+        </form>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var postcodeField = document.getElementById("postcode");
+      var townField = document.getElementById("town");
+      var genderField = document.getElementById("gender");
+      var saveButton = document.getElementById("save");
+      var icField = document.getElementById("ic");
+     var dobField = document.getElementById("date_of_birth");
+
+      
+     icField.addEventListener("input", function() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+    dobField.value = today;
+  });
+
+      postcodeField.addEventListener("change", function() {
+        var postcode = postcodeField.value;
+        var town = getTownFromDatabase(postcode);
+        townField.value = town;
+      });
+    
+      var saveButton = document.getElementById("save");
+      saveButton.addEventListener("click", function() {
+        var gender = genderField.value.toUpperCase();
+    if (gender !== "M" && gender !== "F") {
+      alert("Please enter 'M' for Male or 'F' for Female in the Gender field.");
+      return false; // 
+    }
+        
+      });
+    
+      
+      function getTownFromDatabase(postcode) {
+        if (postcode === "08000") {
+          return "Sungai Petani";
+        } else if (postcode === "43200") {
+          return "Cheras";
+        } else {
+          return "";
+        }
+      }
+    });
+
+
+    </script>
+</body>
+</html>
